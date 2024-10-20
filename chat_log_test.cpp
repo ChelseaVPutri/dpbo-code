@@ -25,19 +25,25 @@ class ChatLog {
                    }
                 }
 
-                if (isFound == true && line.find("From: ") != string::npos) {
+                if (isFound && line.find("From: ") != string::npos) {
                     sender = line.substr(6);
-                    cout << "From: " << sender << endl;
                 }
 
                 if (isFound && line.find("To: ") != string::npos) {
                     receiver = line.substr(4);
-                    cout << "To: " << receiver << endl;
                 }
 
                 if (isFound && line.find("Message: ") != string::npos) {
                     text = line.substr(9);
+                }
+
+                if (line.empty()) {
+                    cout << "id: " << msg_id << endl;
+                    cout << "From: " << sender << endl;
+                    cout << "To: " << receiver << endl;
                     cout << "Message: " << text << endl;
+                    isFound = false;
+                    return;
                 }
             }
             
