@@ -57,10 +57,7 @@ int main() {
 
     cout << "Chatting...." << endl;
     cout << "From " << main_user.getName() << " to " << user1.getName() << endl;
-    chat.sendMessage(main_user, user1);
-
-    // chat.sendMessage(main_user, user2); // chat 2
-    // chat.sendMessage(main_user, user3); // chat 3
+    chat.sendMessage(main_user, user1, "msg.txt");
 
     cout << endl;
     cout << "Show chat log" << endl;
