@@ -47,6 +47,7 @@ int main() {
     int chatlog_id;
     Chat chat;
     ChatLog chat_log;
+    string msg_file = "msg.txt";
 
     cout << "Adding contact" << endl;
     contact_list.addContact(user1);
@@ -56,11 +57,8 @@ int main() {
     cout << endl;
 
     cout << "Chatting...." << endl;
-    cout << "From " << main_user.getName() << " to " << user1.getName() << endl;
-    chat.sendMessage(main_user, user1);
-
-    // chat.sendMessage(main_user, user2); // chat 2
-    // chat.sendMessage(main_user, user3); // chat 3
+    cout << "Sending the message to " << user1.getName() << endl;
+    chat.sendMessage(main_user, user1, msg_file);
 
     cout << endl;
     cout << "Show chat log" << endl;
@@ -69,5 +67,6 @@ int main() {
 
     cout << endl;
 
+    // cout << "Message sent to " << user1.getName() << endl;
     chat_log.printChatLog(chatlog_id);
 }

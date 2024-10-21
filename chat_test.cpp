@@ -6,27 +6,21 @@ class Chat {
         User sender;
         User receiver;
         // FILE * msg_file;
-        int msg_id;
+        // int msg_id;
         string msg_file;
 
     public:
-        Chat() : msg_id(1), msg_file("msg.txt") {}
+        Chat() : msg_file("msg.txt") {}
 
-        void sendMessage(User sender, User receiver) {
-            string text;
-            cout << "Enter the text: " << endl;
-            getline(cin >> ws, text);
-
-            ofstream file("msg.txt", ios::app);
-            file << "id: " << msg_id << endl;
-            file << "From: " << sender.getName() << endl;
-            file << "To: " << receiver.getName() << endl;
-            file << "Message: " << text << endl;
-            file << endl;
-            file.close();
-
-            cout << "Message already sent\n" << endl;
-            msg_id++;
-
+        void sendMessage(User sender, User receiver, string msg_file) {
+            ifstream file(msg_file);
+            if (!file) {
+                cout << "Failed to send the message" << endl;
+                exit(0);
+            } else {
+                cout << "Reading the message..." << endl;
+                cout << "Message already sent to " << receiver.getName() << endl;
+                file.close();
+            }
         }
 };
